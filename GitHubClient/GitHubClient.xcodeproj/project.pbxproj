@@ -60,17 +60,49 @@
 		C87A222F1E92A96A006CABA9 /* GitHubClient */ = {
 			isa = PBXGroup;
 			children = (
-				C87A22301E92A96A006CABA9 /* AppDelegate.swift */,
+				C87A224C1E93EFCA006CABA9 /* Controller */,
+				C87A224D1E93EFDA006CABA9 /* View */,
+				C87A224E1E93EFE9006CABA9 /* Model */,
+				C87A224F1E93EFF0006CABA9 /* Supporting */,
+			);
+			path = GitHubClient;
+			sourceTree = "<group>";
+		};
+		C87A224C1E93EFCA006CABA9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
 				C87A22441E92CE58006CABA9 /* GitHubAuthController.swift */,
+				C87A22301E92A96A006CABA9 /* AppDelegate.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		C87A224D1E93EFDA006CABA9 /* View */ = {
+			isa = PBXGroup;
+			children = (
 				C87A22341E92A96A006CABA9 /* Main.storyboard */,
-				C87A22371E92A96A006CABA9 /* Assets.xcassets */,
 				C87A22391E92A96A006CABA9 /* LaunchScreen.storyboard */,
-				C87A223C1E92A96A006CABA9 /* Info.plist */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		C87A224E1E93EFE9006CABA9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
 				C87A22421E92C910006CABA9 /* GitHub.swift */,
 				C87A22461E92EC04006CABA9 /* FoundationExtensions.swift */,
 				C87A22481E92F9CE006CABA9 /* GitHubAccess.swift */,
 			);
-			path = GitHubClient;
+			name = Model;
+			sourceTree = "<group>";
+		};
+		C87A224F1E93EFF0006CABA9 /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				C87A223C1E92A96A006CABA9 /* Info.plist */,
+				C87A22371E92A96A006CABA9 /* Assets.xcassets */,
+			);
+			name = Supporting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
