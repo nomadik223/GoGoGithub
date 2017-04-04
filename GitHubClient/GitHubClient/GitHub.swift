@@ -12,6 +12,7 @@ let kOAuthBaseURLString = "https://github.com/login/oauth/"
 
 
 typealias GitHubOAuthCompletion = (SaveOptions, Bool)->()
+typealias FetchReposCompletion = ([Repository]?)->()
 
 enum GitHubAuthError : Error {
     case extractingCode
@@ -25,8 +26,25 @@ enum SaveOptions {
 
 class GitHub {
     
+    private var session: URLSession
+    private var components: URLComponents
     
     static let shared = GitHub()
+    
+    private init(){
+        
+        self.session = URLSession(configuration: .default)
+        self.components = URLComponents()
+        
+        self.components.scheme = "https"
+        self.components.host = "api.github.com"
+        
+        if let token = UserDefaults.standard.getAccessToken() {
+            let queryItem = URLQueryItem(name: "access_token", value: token)
+            self.components.queryItems = [queryItem]
+        }
+        
+    }
     
     func oAuthRequestWith(parameters: [String : String]) {
         var parametersString = ""
@@ -91,6 +109,54 @@ class GitHub {
             complete(success: false)
         }
         
+        
+    }
+    
+    func getRepos(completion: @escaping FetchReposCompletion) {
+        
+        func returnToMain(results: [Repository]?){
+            
+            OperationQueue.main.addOperation {
+                completion(results)
+            }
+            
+        }
+        
+        self.components.path = "/user/repos"
+        
+        guard let url = self.components.url else { returnToMain(results: nil); return }
+        
+        self.session.dataTask(with: url) { (data, response, error) in
+            
+            if error != nil { returnToMain(results: nil); return }
+            if let data = data {
+                
+                var repositories = [Repository]()
+                
+                do {
+                    
+                    if let rootJson = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [[String: Any]]{
+                        
+                        for repositoryJSON in rootJson {
+                            if let repo = Repository(json: repositoryJSON){
+                                repositories.append(repo)
+                            }
+                        }
+                        
+                        returnToMain(results: repositories)
+                        print(rootJson)
+                        
+                    }
+                    
+                } catch {
+                    
+                    
+                    
+                }
+                
+            }
+            
+        }.resume()
         
     }
     

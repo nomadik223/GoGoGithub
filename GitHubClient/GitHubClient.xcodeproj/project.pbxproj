@@ -15,6 +15,9 @@
 		C87A22451E92CE58006CABA9 /* GitHubAuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87A22441E92CE58006CABA9 /* GitHubAuthController.swift */; };
 		C87A22471E92EC04006CABA9 /* FoundationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87A22461E92EC04006CABA9 /* FoundationExtensions.swift */; };
 		C87A22491E92F9CE006CABA9 /* GitHubAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87A22481E92F9CE006CABA9 /* GitHubAccess.swift */; };
+		C87A22511E940C2D006CABA9 /* RepoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87A22501E940C2D006CABA9 /* RepoViewController.swift */; };
+		C87A22531E940D50006CABA9 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87A22521E940D50006CABA9 /* UIExtensions.swift */; };
+		C87A22551E941955006CABA9 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87A22541E941955006CABA9 /* Repository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		C87A22441E92CE58006CABA9 /* GitHubAuthController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubAuthController.swift; sourceTree = "<group>"; };
 		C87A22461E92EC04006CABA9 /* FoundationExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundationExtensions.swift; sourceTree = "<group>"; };
 		C87A22481E92F9CE006CABA9 /* GitHubAccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubAccess.swift; sourceTree = "<group>"; };
+		C87A22501E940C2D006CABA9 /* RepoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoViewController.swift; sourceTree = "<group>"; };
+		C87A22521E940D50006CABA9 /* UIExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
+		C87A22541E941955006CABA9 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +79,7 @@
 			children = (
 				C87A22441E92CE58006CABA9 /* GitHubAuthController.swift */,
 				C87A22301E92A96A006CABA9 /* AppDelegate.swift */,
+				C87A22501E940C2D006CABA9 /* RepoViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -92,6 +99,8 @@
 				C87A22421E92C910006CABA9 /* GitHub.swift */,
 				C87A22461E92EC04006CABA9 /* FoundationExtensions.swift */,
 				C87A22481E92F9CE006CABA9 /* GitHubAccess.swift */,
+				C87A22521E940D50006CABA9 /* UIExtensions.swift */,
+				C87A22541E941955006CABA9 /* Repository.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -179,7 +188,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C87A22471E92EC04006CABA9 /* FoundationExtensions.swift in Sources */,
+				C87A22531E940D50006CABA9 /* UIExtensions.swift in Sources */,
 				C87A22431E92C910006CABA9 /* GitHub.swift in Sources */,
+				C87A22551E941955006CABA9 /* Repository.swift in Sources */,
+				C87A22511E940C2D006CABA9 /* RepoViewController.swift in Sources */,
 				C87A22451E92CE58006CABA9 /* GitHubAuthController.swift in Sources */,
 				C87A22311E92A96A006CABA9 /* AppDelegate.swift in Sources */,
 				C87A22491E92F9CE006CABA9 /* GitHubAccess.swift in Sources */,
