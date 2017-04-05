@@ -16,6 +16,14 @@ class RepoViewController: UIViewController {
         }
     }
     
+    var displayRepos : [Repository]? {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
@@ -23,6 +31,7 @@ class RepoViewController: UIViewController {
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        self.searchBar.delegate = self
         
         self.tableView.estimatedRowHeight = 50
         self.tableView.rowHeight = UITableViewAutomaticDimension
@@ -63,4 +72,30 @@ extension RepoViewController : UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
+}
+
+extension RepoViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if let searchedText = searchBar.text {
+            self.displayRepos = self.repos.filter({$0.name.contains(searchedText)})
+        }
+        
+        if searchBar.text == "" {
+            self.displayRepos = nil
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
+        self.displayRepos = nil
+        self.searchBar.resignFirstResponder()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBar.resignFirstResponder()
+        
+    }
+    
 }
