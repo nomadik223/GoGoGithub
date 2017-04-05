@@ -9,29 +9,26 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
 
+class AppDelegate: UIResponder, UIApplicationDelegate {
+    
     var window: UIWindow?
     
     var authController : GitHubAuthController?
     var repoController : RepoViewController?
-
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        
         if let token = UserDefaults.standard.getAccessToken() {
             print(token)
+            
         } else {
             presentAuthController()
         }
-        
         return true
     }
     
     func presentAuthController(){
         if let repoViewController = self.window?.rootViewController as? RepoViewController, let storyboard = repoViewController.storyboard {
-            
             if let authViewController = storyboard.instantiateViewController(withIdentifier: GitHubAuthController.identifier) as? GitHubAuthController {
                 
                 repoViewController.addChildViewController(authViewController)
@@ -43,10 +40,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.repoController = repoViewController
                 
             }
-            
         }
     }
-    
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         
@@ -58,12 +53,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             GitHub.shared.tokenRequestFor(url: url, saveOptions: .UserDefaults(UserDefaults.standard.getAccessToken())) { (saveOptions, success) in
                 
                 if let authViewController = self.authController, let repoViewController = self.repoController {
-                    
                     authViewController.dismissAuthController()
                     repoViewController.update()
-                    
                 }
-                
             }
         } else {
             print("Already got the token!")
@@ -97,4 +89,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
 }
-

@@ -14,16 +14,17 @@ class GitHubAuthController: UIViewController {
         super.viewDidLoad()
         
         if (UserDefaults.standard.getAccessToken() != nil) {
-            loginButtonOutlet.isHidden = true
+            loginButtonOutlet.isEnabled = false
         }
-
-        // Do any additional setup after loading the view.
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        
+        if (UserDefaults.standard.getAccessToken() != nil) {
+            loginButtonOutlet.isEnabled = false
+        }
     }
     
     @IBOutlet weak var loginButtonOutlet: UIButton!
@@ -42,12 +43,12 @@ class GitHubAuthController: UIViewController {
         
         GitHub.shared.oAuthRequestWith(parameters: parameters)
         
-        
     }
     
     func dismissAuthController() {
         self.view.removeFromSuperview()
         self.removeFromParentViewController()
     }
+    
     
 }

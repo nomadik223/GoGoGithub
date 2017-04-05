@@ -31,18 +31,13 @@ class GitHub {
     
     static let shared = GitHub()
     
-    private init(){
+    private init() {
         
         self.session = URLSession(configuration: .default)
         self.components = URLComponents()
         
         self.components.scheme = "https"
         self.components.host = "api.github.com"
-        
-        if let token = UserDefaults.standard.getAccessToken() {
-            let queryItem = URLQueryItem(name: "access_token", value: token)
-            self.components.queryItems = [queryItem]
-        }
         
     }
     
@@ -98,7 +93,7 @@ class GitHub {
                     
                     guard let accessToken = dataString.components(separatedBy: "&").first?.components(separatedBy: "=").last else { complete(success: false); return }
                     
-                    UserDefaults.standard.save(accessToken: accessToken)
+                    complete(success: UserDefaults.standard.save(accessToken: accessToken))
                     
                 }).resume()
                 
@@ -114,12 +109,15 @@ class GitHub {
     
     func getRepos(completion: @escaping FetchReposCompletion) {
         
-        func returnToMain(results: [Repository]?){
-            
+        if let token = UserDefaults.standard.getAccessToken() {
+            let queryItem = URLQueryItem(name: "access_token", value: token)
+            self.components.queryItems = [queryItem]
+        }
+        
+        func returnToMain(results: [Repository]?) {
             OperationQueue.main.addOperation {
                 completion(results)
             }
-            
         }
         
         self.components.path = "/user/repos"
@@ -129,14 +127,13 @@ class GitHub {
         self.session.dataTask(with: url) { (data, response, error) in
             
             if error != nil { returnToMain(results: nil); return }
+            
             if let data = data {
                 
                 var repositories = [Repository]()
                 
                 do {
-                    
-                    if let rootJson = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [[String: Any]]{
-                        
+                    if let rootJson = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [[String : Any]]{
                         for repositoryJSON in rootJson {
                             if let repo = Repository(json: repositoryJSON){
                                 repositories.append(repo)
@@ -144,20 +141,17 @@ class GitHub {
                         }
                         
                         returnToMain(results: repositories)
-                        print(rootJson)
                         
                     }
-                    
                 } catch {
-                    
-                    
                     
                 }
                 
             }
             
-        }.resume()
+            }.resume()
         
     }
     
 }
+
