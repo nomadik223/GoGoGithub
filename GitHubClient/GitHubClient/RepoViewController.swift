@@ -50,12 +50,32 @@ class RepoViewController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        if segue.identifier == RepoDetailViewController.identifier {
+            
+            segue.destination.transitioningDelegate = self
+            
+        }
+    }
+    
 }
+
+extension RepoViewController: UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        return CustomTransition(duration: 1.0)
+        
+    }
+}
+
 
 extension RepoViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("I did it?")
+        self.performSegue(withIdentifier: RepoDetailViewController.identifier, sender: nil)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -72,6 +92,7 @@ extension RepoViewController : UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
+    
 }
 
 extension RepoViewController: UISearchBarDelegate {
@@ -79,7 +100,7 @@ extension RepoViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         if let searchedText = searchBar.text {
-            self.displayRepos = self.repos.filter({$0.name.contains(searchedText)})
+            self.displayRepos = self.repos.filter({($0.name.contains(searchedText))})
         }
         
         if searchBar.text == "" {
