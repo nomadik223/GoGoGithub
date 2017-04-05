@@ -35,7 +35,7 @@ class RepoViewController: UIViewController {
             
             OperationQueue.main.addOperation {
                 self.repos = unwrappedRepos
-                print(self.repos.count)
+                print("Repos found: \(self.repos.count)")
             }
             
         }
