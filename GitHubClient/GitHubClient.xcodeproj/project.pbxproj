@@ -19,6 +19,10 @@
 		C87A22531E940D50006CABA9 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87A22521E940D50006CABA9 /* UIExtensions.swift */; };
 		C87A22551E941955006CABA9 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87A22541E941955006CABA9 /* Repository.swift */; };
 		C87A22591E946438006CABA9 /* RepoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87A22581E946438006CABA9 /* RepoViewCell.swift */; };
+		C87A225B1E956E76006CABA9 /* RepoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87A225A1E956E76006CABA9 /* RepoDetailViewController.swift */; };
+		C87A225D1E95704E006CABA9 /* CustomTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87A225C1E95704E006CABA9 /* CustomTransition.swift */; };
+		C87A22621E9687E6006CABA9 /* RepoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87A22601E9687E6006CABA9 /* RepoTableViewCell.swift */; };
+		C87A22631E9687E6006CABA9 /* RepoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C87A22611E9687E6006CABA9 /* RepoTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +40,10 @@
 		C87A22521E940D50006CABA9 /* UIExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
 		C87A22541E941955006CABA9 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		C87A22581E946438006CABA9 /* RepoViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoViewCell.swift; sourceTree = "<group>"; };
+		C87A225A1E956E76006CABA9 /* RepoDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoDetailViewController.swift; sourceTree = "<group>"; };
+		C87A225C1E95704E006CABA9 /* CustomTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTransition.swift; sourceTree = "<group>"; };
+		C87A22601E9687E6006CABA9 /* RepoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoTableViewCell.swift; sourceTree = "<group>"; };
+		C87A22611E9687E6006CABA9 /* RepoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +91,7 @@
 				C87A22301E92A96A006CABA9 /* AppDelegate.swift */,
 				C87A22501E940C2D006CABA9 /* RepoViewController.swift */,
 				C87A22581E946438006CABA9 /* RepoViewCell.swift */,
+				C87A225A1E956E76006CABA9 /* RepoDetailViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -92,6 +101,7 @@
 			children = (
 				C87A22341E92A96A006CABA9 /* Main.storyboard */,
 				C87A22391E92A96A006CABA9 /* LaunchScreen.storyboard */,
+				C87A22611E9687E6006CABA9 /* RepoTableViewCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -99,11 +109,13 @@
 		C87A224E1E93EFE9006CABA9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C87A22601E9687E6006CABA9 /* RepoTableViewCell.swift */,
 				C87A22421E92C910006CABA9 /* GitHub.swift */,
 				C87A22461E92EC04006CABA9 /* FoundationExtensions.swift */,
 				C87A22481E92F9CE006CABA9 /* GitHubAccess.swift */,
 				C87A22521E940D50006CABA9 /* UIExtensions.swift */,
 				C87A22541E941955006CABA9 /* Repository.swift */,
+				C87A225C1E95704E006CABA9 /* CustomTransition.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -180,6 +192,7 @@
 				C87A223B1E92A96A006CABA9 /* LaunchScreen.storyboard in Resources */,
 				C87A22381E92A96A006CABA9 /* Assets.xcassets in Resources */,
 				C87A22361E92A96A006CABA9 /* Main.storyboard in Resources */,
+				C87A22631E9687E6006CABA9 /* RepoTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,13 +205,16 @@
 			files = (
 				C87A22471E92EC04006CABA9 /* FoundationExtensions.swift in Sources */,
 				C87A22531E940D50006CABA9 /* UIExtensions.swift in Sources */,
+				C87A225D1E95704E006CABA9 /* CustomTransition.swift in Sources */,
 				C87A22431E92C910006CABA9 /* GitHub.swift in Sources */,
 				C87A22591E946438006CABA9 /* RepoViewCell.swift in Sources */,
 				C87A22551E941955006CABA9 /* Repository.swift in Sources */,
 				C87A22511E940C2D006CABA9 /* RepoViewController.swift in Sources */,
 				C87A22451E92CE58006CABA9 /* GitHubAuthController.swift in Sources */,
+				C87A225B1E956E76006CABA9 /* RepoDetailViewController.swift in Sources */,
 				C87A22311E92A96A006CABA9 /* AppDelegate.swift in Sources */,
 				C87A22491E92F9CE006CABA9 /* GitHubAccess.swift in Sources */,
+				C87A22621E9687E6006CABA9 /* RepoTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
